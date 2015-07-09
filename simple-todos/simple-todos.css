@@ -95,6 +95,8 @@ li.checked {
 
 li.checked .text {
   text-decoration: line-through;
+  color: red;
+  transition: all 0.1s ease 0s;
 }
 
 li.private {

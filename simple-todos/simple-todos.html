@@ -1,12 +1,27 @@
 <!-- simple-todos.html -->
 <head>
-  <title>Todo List Testinggggg</title>
+  <title>Todo List</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-      <h1>Todo List</h1>
+      
+      <h1>Todo List ({{incompleteCount}})</h1>
+
+      <label class="hide-completed">
+        <input type="checkbox" checked="{{hideCompleted}}" />
+        Hide Completed Tasks
+      </label>
+
+      {{> loginButtons}}
+
+      {{#if currentUser}}
+        <form class="new-task">
+          <input type="next" name="text" placeholder="Type to add new tasks" />
+        </form>
+      {{/if}}
+
     </header>
 
     <ul>
@@ -17,6 +32,13 @@
   </div>
 </body>
 
+<!-- replace the existing task template with this code -->
 <template name="task">
-  <li>{{text}}</li>
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    <span class="text"><strong>{{username}}</strong> - {{text}}</span>
+  </li>
 </template>
